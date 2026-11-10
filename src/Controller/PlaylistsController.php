@@ -35,7 +35,7 @@ class PlaylistsController extends AbstractController
      * @var CategorieRepository
      */
     private $categorieRepository;
-    
+
     const PLAYLISTS = "pages/playlists.html.twig";
     const PLAYLIST = "pages/playlist.html.twig";
 
@@ -70,6 +70,9 @@ class PlaylistsController extends AbstractController
     {
         if ($champ == "name") {
             $playlists = $this->playlistRepository->findAllOrderByName($ordre);
+        }
+        if ($champ == "nbFormations") {
+            $playlists = $this->playlistRepository->findAllOrderByNbFormations($ordre);
         }
         $categories = $this->categorieRepository->findAll();
         return $this->render(self::PLAYLISTS, [
