@@ -1,0 +1,49 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    <form class="form-inline mt-3 mb-3" method="POST" action="{{ path('admin.categorie.ajout') }}">
+        <div class="input-group">
+            <input type="text" name="name" class="form-control" placeholder="Nom de la catégorie" required maxlength="50">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-info">Ajouter</button>
+            </div>
+        </div>
+    </form>
+<table class="table table-striped">
+    <caption class="visually-hidden">Tableau des catégories</caption>
+    <thead>
+        <tr>
+            <th>
+                Catégorie
+            </th>
+            <th>
+                Suppression
+            </th>
+        </tr>  
+    </thead>
+    <tbody>
+        {% for categorie in categories %}
+            <tr class="align-middle">
+                <td>
+                    <h5 class="text-info">
+                        {{ categorie.name }}
+                    </h5>
+                </td>
+                <td>
+                    {% if categorie.formations|length == 0 %}
+                        <a href="{{ path('admin.categorie.suppr', {id:categorie.id}) }}"
+                           class="btn btn-danger"
+                           onclick="return confirm('Etes-vous sûr de vouloir supprimer {{categorie.name}} ?')">
+                            Supprimer
+                        </a>
+                    {% else %}
+                        <a href="#" class="btn btn-danger disabled" aria-disabled="true">
+                            Supprimer
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
