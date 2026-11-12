@@ -3,7 +3,7 @@
 {% block body %}
                     
     <p class="text-end">
-        <a href="{{ path('admin.formation.ajout') }}" class="btn btn-primary">
+        <a href="{{ path('admin.formation.ajout') }}" class="btn btn-info">
             Ajouter une nouvelle formation
         </a>
     </p>
@@ -93,7 +93,7 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{{ path('admin.formation.edit', {id:formation.id}) }}" class="btn btn-secondary">Editer</a>
+                        <a href="{{ path('admin.formation.edit', {id:formation.id}) }}" class="btn btn-outline-secondary">Editer</a>
                         <a href="{{ path('admin.formation.suppr', {id:formation.id}) }}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de vouloir supprimer {{ formation.title }} ?')">Supprimer</a>
                     </td>
                 </tr>
